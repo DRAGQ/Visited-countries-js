@@ -1,0 +1,15 @@
+I use this site for the map https://simplemaps.com/resources/svg-world
+Create users database:
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100) NOT NULL UNIQUE,
+        password VARCHAR(100) NOT NULL,
+        color VARCHAR(100) NOT NULL,
+    );
+Create countries database:
+    CREATE TABLE countries (
+        id SERIAL PRIMARY KEY,
+        country_id VARCHAR(10),
+        country_class VARCHAR(100),
+        user_id INTEGER REFERENCES users(id),
+    );
