@@ -1,15 +1,68 @@
-I use this site for the map https://simplemaps.com/resources/svg-world
-Create users database:
-    CREATE TABLE users (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(100) NOT NULL UNIQUE,
-        password VARCHAR(100) NOT NULL,
-        color VARCHAR(100) NOT NULL,
-    );
-Create countries database:
-    CREATE TABLE countries (
-        id SERIAL PRIMARY KEY,
-        country_id VARCHAR(10),
-        country_class VARCHAR(100),
-        user_id INTEGER REFERENCES users(id),
-    );
+# VisitRed Countries 🌍
+
+A web application where users can register, log in, and mark countries they've visited on an interactive SVG world map.
+
+## 🔧 Technologies Used
+
+- Node.js
+- Express.js
+- EJS templating
+- PostgreSQL (pg + pgAdmin)
+- CSS / JavaScript
+- bcrypt (for password hashing)
+
+## 🚀 Features
+
+- Register and log in with secure password rules (min. 8 chars, uppercase, lowercase, number)
+- Show/hide password on input
+- Choose your color for visited countries
+- Click on countries to add/remove them to your visited list
+- View visited countries in a list
+- Search country and open in Google
+- Edit your name, password, or color
+- Delete your account
+
+## 🌍 Map Source
+
+SVG World map from [SimpleMaps](https://simplemaps.com/resources/svg-world)
+
+## 🛠️ Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/visitred-countries.git
+   cd visitred-countries
+
+Install dependencies:
+
+npm install
+
+Set up your PostgreSQL database with the following tables:
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    color VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE countries (
+    id SERIAL PRIMARY KEY,
+    country_id VARCHAR(10),
+    country_class VARCHAR(100),
+    user_id INTEGER REFERENCES users(id)
+);
+
+Create a `.env` file and add the following:
+
+DB_USER=postgres  
+DB_HOST=localhost  
+DB_DATABASE=WorldMap  
+DB_PASSWORD=qweqwe  
+DB_PORT=5432
+
+Start the app:
+
+node app.js
+
+Visit http://localhost:3000 in your browser.
