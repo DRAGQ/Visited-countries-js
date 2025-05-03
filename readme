@@ -16,6 +16,7 @@ A web application where users can register, log in, and mark countries they've v
 - Register and log in with secure password rules (min. 8 chars, uppercase, lowercase, number)
 - Show/hide password on input
 - Choose your color for visited countries
+- Enter the country name in the input and add it
 - Click on countries to add/remove them to your visited list
 - View visited countries in a list
 - Search country and open in Google
@@ -24,7 +25,7 @@ A web application where users can register, log in, and mark countries they've v
 
 ## 🌍 Map Source
 
-SVG World map from [SimpleMaps](https://simplemaps.com/resources/svg-world)
+SVG World map from https://simplemaps.com/resources/svg-world
 
 ## 🛠️ Setup Instructions
 
@@ -63,6 +64,6 @@ DB_PORT=5432
 
 Start the app:
 
-node app.js
+node index.js
 
 Visit http://localhost:3000 in your browser.
