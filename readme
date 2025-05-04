@@ -51,7 +51,7 @@ CREATE TABLE countries (
     id SERIAL PRIMARY KEY,
     country_id VARCHAR(10),
     country_class VARCHAR(100),
-    user_id INTEGER REFERENCES users(id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 Create a `.env` file and add the following:
