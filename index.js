@@ -290,7 +290,7 @@ app.post("/updateUser", async (req, res) => {
         } else {
           if (result) {
               // Passwords match, authentication successful
-              console.log('Passwords match! User authenticated.');
+              console.log('Password is correct! User authenticated.');
               try{
                 //Check if the user want to change name.
                 const checkNamePassword = await db.query("SELECT * FROM users WHERE name = $1 AND password = $2", [newName, storedHashedPassword]);
@@ -351,7 +351,7 @@ app.post("/updateUser", async (req, res) => {
                   req.session.save( async (err) => {
                   if(err) console.log(err);
                         else {
-                          await db.query("UPDATE users SET color = $1 WHERE name = $2", [chooseColor, storedUserName]);
+                          await db.query("UPDATE users SET color = $1 WHERE name = $2", [chooseColor, newName]);
                           console.log("Color was updated, new color is: ", chooseColor);
                         }
                     });
@@ -362,7 +362,7 @@ app.post("/updateUser", async (req, res) => {
             } else {
               // Passwords don't match, authentication failed
               invalidBool = true;
-              invalidUserInput = 'New/Old password and old password does not match!';
+              invalidUserInput = 'Old password is not correct!';
           } 
         }
       });
