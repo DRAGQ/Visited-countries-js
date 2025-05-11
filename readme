@@ -2,7 +2,11 @@
 
 A web application where users can register, log in, and mark countries they've visited on an interactive SVG world map.
 
-## 🔧 Technologies Used
+## Video 🎥
+
+- https://youtu.be/M8i-dAxydWM 
+
+## Technologies Used 🔧
 
 - Node.js
 - Express.js
@@ -11,7 +15,7 @@ A web application where users can register, log in, and mark countries they've v
 - CSS / JavaScript
 - bcrypt (for password hashing)
 
-## 🚀 Features
+## Features 🚀
 
 - Register and log in with secure password rules (min. 8 chars, uppercase, lowercase, number)
 - Show/hide password on input
