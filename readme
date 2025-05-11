@@ -27,11 +27,11 @@ A web application where users can register, log in, and mark countries they've v
 - Edit your name, password, or color
 - Delete your account
 
-## 🌍 Map Source
+## Map Source 🌍
 
 SVG World map from https://simplemaps.com/resources/svg-world
 
-## 🛠️ Setup Instructions
+## Setup Instructions 🛠️
 
 Install dependencies:
 
