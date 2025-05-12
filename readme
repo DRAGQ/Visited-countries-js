@@ -1,38 +1,92 @@
 # Visited Countries 🌍
 
-A web application where users can register, log in, and mark countries they've visited on an interactive SVG world map.
+Visited Countries is a full-stack web application that allows users to register, log in, and mark countries they've visited on an interactive SVG world map.
+It's designed to be both useful and visually engaging, giving users a fun way to track their travel history and visualize their adventures around the world.
 
 ## Video 🎥
 
-[Watch Youtube video](https://youtu.be/M8i-dAxydWM) 
+overview video:
 
- ## File Overview 👀
+[Watch Youtube video](https://youtu.be/M8i-dAxydWM)
 
--registerScript.js - handle empty input, when triggers borders of inputs are red and it shows warning text for 1.5 sec. 
-		           - toggle eye icon for view password 
-- earth.jpg - image for login/register page
-- main.css - handle style for login.ejs, register.ejs and for login.ejs
-- index.ejs - main page where is svg map, list of visited countries, input for adding and removing countries, buttons for login/register and update/delete user.
-	        - I used ids and classes for marking specific countries, when country have only one region there is id and when it have multiple regions it have classes and I using 	     it inside inner script
-	        - inside script I handle targetting country when it is not added, when it is added and when user click somewhere else. And when user select some country inside
-	          his list of visited countries it change magnifying glass button to the Google address of that country
-	        - toggle delete/update user box
-- login.ejs - login page, when user have account already, he can log in. Page contain two inputs with name and password field and direction to the register page, script with handling bad inputs and showing password with eye icon.
-- register.ejs - register page, when user don't have account, he have to register before using main page. Page contain four inputs with name, password, confirm password and select color field and direction to the login page, script with handling bad inputs and showing password with eye icon.
-- countryCode.js - contains key value pairs country code : country name and it is divided to countries, where I use them as id and where I use them as classes
-- index.js - this is backend, where I create port to localhost:3000, handle session for logged in user, handle security for user password with bcrypt, creating database with postgres, initialiye env file, handle all requests from pages as log in/logout, register, handle correct log in informations, using local passport strategy for serialize and deserialize user, update user information, delete user, main page where I add/remove into visited list and save/get information from database, about database I learn from udemy course by Angela Yu, it was really good course.
+ ## File Overview 📁
 
--.env - here is session secret and database login information
--.gitignore - informations which should not be included when I add it into github. I find this somewhere on github
+Below is an overview of key files and their roles within the application:
+
+### registerScript.js 
+	- Handles form validation on the registration and login pages.
+	- If an input field is empty, it highlights the border in red and shows a warning message for 1.5 seconds.
+	- Provides the functionality to toggle password visibility using an eye icon, improving user experience on password input fields.
+
+
+### earth.jpg 
+	- Background image for login/register pages.
+### main.css 
+	- Contains the styles for the login, registration, and main application page.
+### index.ejs 
+	- The main interactive page users see after logging in.
+	- Displays the SVG world map where users can click on countries to mark them as visited.
+	- Includes:
+		- list of visited countries.
+		- Input fields to manually add/remove a country.
+		- Buttons for logging in, registering, updating user details, and deleting an account.
+	- Countries with only one region use an id, while countries with multiple regions use a class. The embedded script handles targeting these using JavaScript.
+	- Features include:
+		- Changing a country’s color based on the user’s selected theme
+		- Updating the magnifying glass button with a Google Maps link to a selected country
+		- Toggling visibility for delete/update forms
+	
+### login.ejs
+	- he login page for existing users.
+	- Consists of two input fields: username and password.
+	- Includes a script for client-side input validation.
+	- Also includes a link for new users to register and an eye icon to show/hide passwords.
+
+### register.ejs
+	- The registration page for new users.
+	- Consists of four input fields: username, password, confirm password, color picker (for marking visited countries).
+	- Includes a script for client-side input validation.
+	- Also includes a link for new users to register and an eye icon to show/hide passwords.
+
+### countryCode.js
+	- Contains key-value pairs of country codes and names.
+	- Distinguishes between single-region (id) and multi-region (class) countries.
+	- Used by the index.js script to reference map elements and synchronize selections with user data.
+
+### index.js
+	- The backend entry point for the server (runs on localhost:3000).
+	- Built using Express.js and integrates with:
+		- PostgreSQL for data storage
+		- bcrypt for secure password hashing and compare
+		- Passport.js for user authentication (local strategy)
+	- Key features:
+		- Session management for logged-in users
+		- Registration/login/logout routes
+		- Storing and retrieving visited countries from the database
+		- Updating and deleting user data
+	- The database structure and backend logic were inspired by Angela Yu’s Udemy course, which provided a clear foundation for learning authentication and database integration.
+
+### .env
+	- Stores sensitive configuration:
+		- PostgreSQL database credentials
+		- Session secret for cookies
+
+### .gitignore
+	- Prevents sensitive or unnecessary files (like .env and node_modules) from being pushed to GitHub.
+	- Ensures cleaner version control and security.
 
 ## Technologies Used 🔧
 
-- Node.js
-- Express.js
-- EJS templating
-- PostgreSQL (pg + pgAdmin)
-- CSS / JavaScript
-- bcrypt (for password hashing)
+This project leverages a modern full-stack development approach, including:
+
+- Node.js – Runtime environment for backend development
+- Express.js – Minimalist web framework for handling routes and middleware
+- EJS templating – Server-side templating engine used to render dynamic content
+- PostgreSQL – Relational database used to store users and their visited countries
+- pg / pgAdmin – PostgreSQL client library and GUI tool for database management
+- CSS - Used on the frontend for interaction, validation, and design
+- bcrypt – Library for hashing passwords securely
+- Passport.js – Authentication middleware that simplifies login and session handling
 
 ## Features 🚀
 
@@ -54,14 +108,14 @@ SVG World map from https://simplemaps.com/resources/svg-world
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/visitred-countries.git
+   git clone https://github.com/DRAGQ/Visited-countries-js
    cd visitred-countries
 
-Install dependencies
+2. Install dependencies
 
-npm install
+   npm install
 
-Set up your PostgreSQL database with the following tables:
+3. Set up your PostgreSQL database:
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -77,16 +131,17 @@ CREATE TABLE countries (
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
-Create a `.env` file and add the following:
+4. Create a `.env` file and add the following:
 
-DB_USER=postgres  
-DB_HOST=localhost  
-DB_DATABASE=WorldMap  
-DB_PASSWORD=qweqwe  
-DB_PORT=5432
+   DB_USER=postgres  
+   DB_HOST=localhost  
+   DB_DATABASE=WorldMap  
+   DB_PASSWORD=qweqwe  
+   DB_PORT=5432
 
-Start the app:
+5. Start the app:
 
-node index.js
+   node index.js
 
-Visit http://localhost:3000 in your browser.
+6. Open the app in your browser:
+   http://localhost:3000 in your browser.
