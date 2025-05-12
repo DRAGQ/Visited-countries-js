@@ -4,7 +4,26 @@ A web application where users can register, log in, and mark countries they've v
 
 ## Video 🎥
 
-- https://youtu.be/M8i-dAxydWM 
+[Watch Youtube video](https://youtu.be/M8i-dAxydWM) 
+
+ ## File Overview 👀
+
+-registerScript.js - handle empty input, when triggers borders of inputs are red and it shows warning text for 1.5 sec. 
+		           - toggle eye icon for view password 
+- earth.jpg - image for login/register page
+- main.css - handle style for login.ejs, register.ejs and for login.ejs
+- index.ejs - main page where is svg map, list of visited countries, input for adding and removing countries, buttons for login/register and update/delete user.
+	        - I used ids and classes for marking specific countries, when country have only one region there is id and when it have multiple regions it have classes and I using 	     it inside inner script
+	        - inside script I handle targetting country when it is not added, when it is added and when user click somewhere else. And when user select some country inside
+	          his list of visited countries it change magnifying glass button to the Google address of that country
+	        - toggle delete/update user box
+- login.ejs - login page, when user have account already, he can log in. Page contain two inputs with name and password field and direction to the register page, script with handling bad inputs and showing password with eye icon.
+- register.ejs - register page, when user don't have account, he have to register before using main page. Page contain four inputs with name, password, confirm password and select color field and direction to the login page, script with handling bad inputs and showing password with eye icon.
+- countryCode.js - contains key value pairs country code : country name and it is divided to countries, where I use them as id and where I use them as classes
+- index.js - this is backend, where I create port to localhost:3000, handle session for logged in user, handle security for user password with bcrypt, creating database with postgres, initialiye env file, handle all requests from pages as log in/logout, register, handle correct log in informations, using local passport strategy for serialize and deserialize user, update user information, delete user, main page where I add/remove into visited list and save/get information from database, about database I learn from udemy course by Angela Yu, it was really good course.
+
+-.env - here is session secret and database login information
+-.gitignore - informations which should not be included when I add it into github. I find this somewhere on github
 
 ## Technologies Used 🔧
 
@@ -33,7 +52,12 @@ SVG World map from https://simplemaps.com/resources/svg-world
 
 ## Setup Instructions 🛠️
 
-Install dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/visitred-countries.git
+   cd visitred-countries
+
+Install dependencies
 
 npm install
 
